@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .navBar-item{
+    @apply bg-red-600 w-[9rem] text-center h-[2rem] hover:bg-gray-500 ;
+  }
+}
