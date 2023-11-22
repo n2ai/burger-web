@@ -35,7 +35,7 @@ const NavBar = () => {
                 </button>
             </nav>
             {toggle && (
-                <div className='bg-black-500 w-full'>
+                <div className='bg-black-500 w-full sm:hidden'>
                     <ul className="w-full">
                         <li className="navBar-item">Reservations</li>
                         <li className='navBar-item'>Menu</li>
