@@ -1,7 +1,11 @@
+import '../styles/homePage.css'
+
 const HomePage = ()=>{
     return(
-        <div>
-            This Is Homepage
+        <div className="homepage-main">
+            <div className="homepage-reservation">
+                
+            </div>
         </div>
     )
 }

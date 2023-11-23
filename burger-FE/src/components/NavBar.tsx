@@ -1,6 +1,6 @@
 import '../styles/navBar.css'
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,Link } from 'react-router-dom';
 
 const NavBar = () => {
 
@@ -14,18 +14,27 @@ const NavBar = () => {
 
     return(
         <div>
-            <nav className="flex w-full justify-around">
-                <ul className="list-none flex gap-x-5 justify-around">
-                <li>Logo</li>
-                <li>Home</li>
+            <nav className="logo-session flex w-full justify-around">
+                <ul className="list-none flex gap-x-6 justify-around">
+                    <Link to='/'>
+                        <img className='w-[5rem] h-[5rem]' src='/src/images/logo.png'></img>
+                    </Link>
                 </ul>
-                <ul className="float-right list-none flex gap-x-5 max-md:hidden">
-                    <NavLink to='/reservation' >Reservations</NavLink>
-                    <NavLink to='/menu'>Menu</NavLink>
-                    <NavLink to='/about'>About</NavLink>
-                    <NavLink to='/contact'>Contact</NavLink>
+                <ul className="nav-session items-center list-none flex gap-x-5 max-md:hidden">
+                    <li>
+                        <NavLink to='/reservation'  >Reservations</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/menu'>Menu</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/about'>About</NavLink>
+                    </li>
+                    <li>
+                        <NavLink to='/contact'>Contact</NavLink>
+                    </li>
                 </ul>
-                <button className='float-right md:hidden flex-box' onClick={toggleHandler}>
+                <button className='nav-trigger float-right md:hidden flex-box' onClick={toggleHandler}>
                     {
                         !toggle ? (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -37,12 +46,20 @@ const NavBar = () => {
                 </button>
             </nav>
             {toggle && (
-                <div className='bg-black-500 w-full md:hidden'>
+                <div className='nav-dropdown-session bg-black-500 w-full md:hidden'>
                     <ul className="w-full">
-                        <NavLink to='/reservation' >Reservations</NavLink>
-                        <NavLink to='/menu'>Menu</NavLink>
-                        <NavLink to='/about'>About</NavLink>
-                        <NavLink to='/contact'>Contact</NavLink>
+                        <li className='navBar-item-drop'>
+                            <NavLink to='/reservation '>Reservations</NavLink> 
+                        </li>
+                        <li className='navBar-item-drop'>
+                            <NavLink to='/menu'>Menu</NavLink>
+                        </li>
+                        <li className='navBar-item-drop'>
+                            <NavLink to='/about'>About</NavLink>
+                        </li>
+                        <li className='navBar-item-drop'>
+                            <NavLink to='/contact'>Contact</NavLink>
+                        </li>
                     </ul>
                 </div>
             )}

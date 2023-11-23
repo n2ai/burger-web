@@ -8,6 +8,20 @@
   }
 
   .navBar-item-drop{
-    @apply w-full text-center;
+    @apply flex justify-center
   }
+
+}
+
+.active{
+  background:black;
+  color: white;
+  border-radius: 2rem;
+  
+  display: inline-block;
+  text-align: center;
+}
+
+.nav-dropdown-session{
+  translate:x;
 }
