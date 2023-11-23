@@ -4,6 +4,10 @@
 
 @layer utilities {
   .navBar-item{
-    @apply bg-red-600 w-[9rem] text-center h-[2rem] hover:bg-gray-500 ;
+    @apply w-[9rem] text-center h-[2rem] hover:bg-gray-500 ;
+  }
+
+  .navBar-item-drop{
+    @apply w-full text-center;
   }
 }

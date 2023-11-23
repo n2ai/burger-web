@@ -17,13 +17,13 @@ const NavBar = () => {
                 <li>Logo</li>
                 <li>Home</li>
                 </ul>
-                <ul className="float-right list-none flex gap-x-5 max-sm:hidden">
+                <ul className="float-right list-none flex gap-x-5 max-md:hidden">
                     <li className="navBar-item">Reservations</li>
                     <li className='navBar-item'>Menu</li>
                     <li className='navBar-item'>About</li>
                     <li className='navBar-item'>Contact</li>
                 </ul>
-                <button className='float-right sm:hidden flex-box' onClick={toggleHandler}>
+                <button className='float-right md:hidden flex-box' onClick={toggleHandler}>
                     {
                         !toggle ? (<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -35,12 +35,12 @@ const NavBar = () => {
                 </button>
             </nav>
             {toggle && (
-                <div className='bg-black-500 w-full sm:hidden'>
+                <div className='bg-black-500 w-full md:hidden'>
                     <ul className="w-full">
-                        <li className="navBar-item">Reservations</li>
-                        <li className='navBar-item'>Menu</li>
-                        <li className='navBar-item'>About</li>
-                        <li className='navBar-item'>Contact</li>
+                        <li className='navBar-item-drop'>Reservations</li>
+                        <li className='navBar-item-drop'>Menu</li>
+                        <li className='navBar-item-drop'>About</li>
+                        <li className='navBar-item-drop'>Contact</li>
                     </ul>
                 </div>
             )}
