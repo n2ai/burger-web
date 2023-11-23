@@ -1,11 +1,31 @@
-import HomePage from './pages/homePage'
+import RootLayout from "./pages/RootLayout";
+import HomePage from "./pages/HomePage";
+import * as React from "react";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Route
+} from "react-router-dom";
 import './App.css'
+import AboutPage from "./pages/AboutPage";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<RootLayout/>}>
+      <Route index element={<HomePage/>}></Route>
+      <Route path="about" element={<AboutPage/>}></Route>
+    </Route>
+  )
+);
+
+
 
 function App() {
 
   return (
     <>
-      <HomePage />
+      <RouterProvider router={router}/>
     </>
   )
 }
