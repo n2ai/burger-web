@@ -17,7 +17,7 @@ const NavBar = () => {
             <nav className="logo-session flex w-full justify-around">
                 <ul className="list-none flex gap-x-6 justify-around">
                     <Link to='/'>
-                        <img className='w-[5rem] h-[5rem]' src='/src/images/logo.png'></img>
+                        <img className='w-[5rem] h-[5rem]' src='/src/images/logo2.png'></img>
                     </Link>
                 </ul>
                 <ul className="nav-session items-center list-none flex gap-x-5 max-md:hidden">
