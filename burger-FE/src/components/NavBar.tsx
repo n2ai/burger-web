@@ -22,9 +22,6 @@ const NavBar = () => {
                 </ul>
                 <ul className="nav-session items-center list-none flex gap-x-5 max-md:hidden">
                     <li>
-                        <NavLink to='/reservation'  >Reservations</NavLink>
-                    </li>
-                    <li>
                         <NavLink to='/menu'>Menu</NavLink>
                     </li>
                     <li>
@@ -48,9 +45,6 @@ const NavBar = () => {
             {toggle && (
                 <div className='nav-dropdown-session bg-black-500 w-full md:hidden'>
                     <ul className="w-full">
-                        <li className='navBar-item-drop'>
-                            <NavLink to='/reservation '>Reservations</NavLink> 
-                        </li>
                         <li className='navBar-item-drop'>
                             <NavLink to='/menu'>Menu</NavLink>
                         </li>

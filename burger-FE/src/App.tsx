@@ -9,12 +9,14 @@ import {
 } from "react-router-dom";
 import './App.css'
 import AboutPage from "./pages/AboutPage";
+import ReservationPage from "./pages/ReservationPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout/>}>
       <Route index element={<HomePage/>}></Route>
       <Route path="about" element={<AboutPage/>}></Route>
+      <Route path="reservation" element={<ReservationPage/>}></Route>
     </Route>
   )
 );
