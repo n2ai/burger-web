@@ -36,23 +36,29 @@ const ReservationPage = ()=>{
                 </div>
                 
                 {/**Pick date and time section*/}
-                <div>
+                <div className="w-full">
                     <div>
                         <div>
                             <label>Date</label>
                         </div>
                         <div>
-                            <input className="bg-black border border-white" placeholder="date"></input>
+                            <input className=" bg-black border border-white w-[30%] h-[2.5rem]" type="date" placeholder="date"></input>
                         </div>
                     </div>
-                    <div>
 
+                    <div>
+                        <div>
+                            <label>Date</label>
+                        </div>
+                        <div>
+                            <input className=" bg-black border border-white w-[30%] h-[2.5rem]" type="date" placeholder="date"></input>
+                        </div>
                     </div>
                 </div>
 
                 {/**Pick number of person*/}
                 <div>
-                    <Datepicker/>
+                    
                 </div>
             </form>
         </div>
