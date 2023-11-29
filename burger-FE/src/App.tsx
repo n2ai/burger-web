@@ -1,6 +1,6 @@
 import RootLayout from "./pages/RootLayout";
 import HomePage from "./pages/HomePage";
-import * as React from "react";
+
 import {
   createBrowserRouter,
   createRoutesFromElements,
