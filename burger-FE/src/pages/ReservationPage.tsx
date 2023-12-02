@@ -1,37 +1,69 @@
+import axios from "axios"
+import { ChangeEvent, useState } from "react"
+import { FormEvent } from "react"
 
+interface IFormData{
+    name:string,
+    email:string,
+    phoneNumber:string,
+    date:string,
+    time:string,
+    number:number
+}
 
 const ReservationPage = ()=>{
+
+    const [formData, setFormData] = useState<IFormData>({
+        name:'',
+        email:'',
+        phoneNumber:'',
+        date:'',
+        time:'',
+        number:0
+    })
+    
+    const handleChange = (e:any)=>{
+        setFormData((prevState)=>{
+            [...prevState,]
+        }:Object)
+    }
+
+    const onSubmit = (e:FormEvent):void=>{
+        e.preventDefault()
+
+    }
+
     return (
-        <div className="bg-black text-white w-[100wh] h-[100vh] flex items-center justify-center">
-            <form className="w-[500px] h-[600px] border box">
+        <div className="bg-black text-white w-[100wh] h-[100vh] flex items-center justify-center" onSubmit={onSubmit}>
+            <form className="w-[500px] h-[600px] border box form">
                 
                 {/**Full name section */}
                 <div className="w-full mt-9 mb-9">
                     <div className="">
-                        <label className="ml-[75px]">Full Name</label>
+                        <label htmlFor="name" className="ml-[75px]">Full Name</label>
                     </div>
                     <div className="flex justify-center">
-                        <input className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="name" name="name" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
 
                 {/**Email section */}
                 <div className="w-full mb-9">
                     <div className="">
-                        <label className="ml-[75px]">Email</label>
+                        <label htmlFor="email" className="ml-[75px]">Email</label>
                     </div>
                     <div className="flex justify-center">
-                        <input className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="email" name="email" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
 
                 {/**Phone Number section */}
                 <div className="w-full">
                     <div className="">
-                        <label className="ml-[75px]">Phone Number</label>
+                        <label htmlFor="phoneNumber" className="ml-[75px]">Phone Number</label>
                     </div>
                     <div className="flex justify-center">
-                        <input className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="phoneNumber" name="phoneNumber" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
                 
@@ -40,20 +72,20 @@ const ReservationPage = ()=>{
                     {/**Date part session */}
                     <div className="w-[30%]">
                         <div>
-                            <label>Date</label>
+                            <label htmlFor="date">Date</label>
                         </div>
                         
-                        <input className=" bg-black border border-white w-full h-[2.5rem]" type="date" placeholder="date"></input>
+                        <input id="date" name="date" className=" bg-black border border-white w-full h-[2.5rem]" type="date" placeholder="date"></input>
                     </div>
 
                     {/**Time part session */}
 
                     <div className="w-[30%]">
                         <div>
-                            <label>Time</label>
+                            <label htmlFor="time">Time</label>
                         </div>
                         
-                        <input className=" bg-black border border-white w-full h-[2.5rem]" type="time" placeholder="date"></input>
+                        <input id="time" name="time" className=" bg-black border border-white w-full h-[2.5rem]" type="time" placeholder="date"></input>
                         
                     </div>
                 </div>
@@ -61,14 +93,14 @@ const ReservationPage = ()=>{
                 {/**Pick number of person*/}
                 <div className="w-full mt-5">
                     <div className="">
-                        <label className="ml-[75px]">Number of people</label>
+                        <label htmlFor="people" className="ml-[75px]">Number of people</label>
                     </div>
                     <div className="flex justify-center">
-                        <input type="number" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="people" name="people" type="number" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
 
-                <div className="flex justify-center mt-5">
+                <div className="flex justify-center mt-3">
                     <button className='reservation-button max-md:mt-12 max-md:mb-12 text-white border px-6 py-4 hover:scale-125 transition duration-200 ' >
                         Reserve
                     </button>
