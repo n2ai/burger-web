@@ -36,29 +36,42 @@ const ReservationPage = ()=>{
                 </div>
                 
                 {/**Pick date and time section*/}
-                <div className="w-full">
-                    <div>
+                <div className="w-full flex justify-center gap-12 mt-5">
+                    {/**Date part session */}
+                    <div className="w-[30%]">
                         <div>
                             <label>Date</label>
                         </div>
-                        <div>
-                            <input className=" bg-black border border-white w-[30%] h-[2.5rem]" type="date" placeholder="date"></input>
-                        </div>
+                        
+                        <input className=" bg-black border border-white w-full h-[2.5rem]" type="date" placeholder="date"></input>
                     </div>
 
-                    <div>
+                    {/**Time part session */}
+
+                    <div className="w-[30%]">
                         <div>
-                            <label>Date</label>
+                            <label>Time</label>
                         </div>
-                        <div>
-                            <input className=" bg-black border border-white w-[30%] h-[2.5rem]" type="date" placeholder="date"></input>
-                        </div>
+                        
+                        <input className=" bg-black border border-white w-full h-[2.5rem]" type="time" placeholder="date"></input>
+                        
                     </div>
                 </div>
 
                 {/**Pick number of person*/}
-                <div>
-                    
+                <div className="w-full mt-5">
+                    <div className="">
+                        <label className="ml-[75px]">Number of people</label>
+                    </div>
+                    <div className="flex justify-center">
+                        <input type="number" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                    </div>
+                </div>
+
+                <div className="flex justify-center mt-5">
+                    <button className='reservation-button max-md:mt-12 max-md:mb-12 text-white border px-6 py-4 hover:scale-125 transition duration-200 ' >
+                        Reserve
+                    </button>
                 </div>
             </form>
         </div>
