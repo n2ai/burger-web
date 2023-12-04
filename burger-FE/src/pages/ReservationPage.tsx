@@ -34,6 +34,13 @@ const ReservationPage = ()=>{
 
     const onSubmit = (e:FormEvent):void=>{
         e.preventDefault()
+        axios.post('',formData)
+            .then((response)=>{
+                console.log(response)
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
         console.log(formData)
     }
     
