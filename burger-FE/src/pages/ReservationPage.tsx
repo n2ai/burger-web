@@ -8,7 +8,7 @@ interface IFormData{
     phoneNumber:string,
     date:string,
     time:string,
-    number:number
+    people:number
 }
 
 const ReservationPage = ()=>{
@@ -19,19 +19,24 @@ const ReservationPage = ()=>{
         phoneNumber:'',
         date:'',
         time:'',
-        number:0
+        people:0
     })
     
-    const handleChange = (e:any)=>{
-        setFormData((prevState)=>{
-            [...prevState,]
-        }:Object)
+    const handleChange = (ev:ChangeEvent)=>{
+        const key = ((ev.target as HTMLInputElement).name)
+        const value:string|number = (ev.target as HTMLInputElement).value
+        setFormData(prev=>{
+            const newForm:IFormData = {...prev, [key]:value}
+            return newForm
+
+        })
     }
 
     const onSubmit = (e:FormEvent):void=>{
         e.preventDefault()
-
+        console.log(formData)
     }
+    
 
     return (
         <div className="bg-black text-white w-[100wh] h-[100vh] flex items-center justify-center" onSubmit={onSubmit}>
@@ -43,7 +48,7 @@ const ReservationPage = ()=>{
                         <label htmlFor="name" className="ml-[75px]">Full Name</label>
                     </div>
                     <div className="flex justify-center">
-                        <input id="name" name="name" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="name" name="name" onChange={handleChange} className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
 
@@ -53,7 +58,7 @@ const ReservationPage = ()=>{
                         <label htmlFor="email" className="ml-[75px]">Email</label>
                     </div>
                     <div className="flex justify-center">
-                        <input id="email" name="email" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="email" name="email" onChange={handleChange} className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
 
@@ -63,7 +68,7 @@ const ReservationPage = ()=>{
                         <label htmlFor="phoneNumber" className="ml-[75px]">Phone Number</label>
                     </div>
                     <div className="flex justify-center">
-                        <input id="phoneNumber" name="phoneNumber" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="phoneNumber" name="phoneNumber" onChange={handleChange} className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
                 
@@ -75,7 +80,7 @@ const ReservationPage = ()=>{
                             <label htmlFor="date">Date</label>
                         </div>
                         
-                        <input id="date" name="date" className=" bg-black border border-white w-full h-[2.5rem]" type="date" placeholder="date"></input>
+                        <input id="date" name="date" onChange={handleChange} className=" bg-black border border-white w-full h-[2.5rem]" type="date" placeholder="date"></input>
                     </div>
 
                     {/**Time part session */}
@@ -85,7 +90,7 @@ const ReservationPage = ()=>{
                             <label htmlFor="time">Time</label>
                         </div>
                         
-                        <input id="time" name="time" className=" bg-black border border-white w-full h-[2.5rem]" type="time" placeholder="date"></input>
+                        <input id="time" name="time" onChange={handleChange} className=" bg-black border border-white w-full h-[2.5rem]" type="time" placeholder="date"></input>
                         
                     </div>
                 </div>
@@ -96,7 +101,7 @@ const ReservationPage = ()=>{
                         <label htmlFor="people" className="ml-[75px]">Number of people</label>
                     </div>
                     <div className="flex justify-center">
-                        <input id="people" name="people" type="number" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
+                        <input id="people" name="people" onChange={handleChange} type="number" className="bg-black border border-white w-[70%] h-[2.5rem]"></input>
                     </div>
                 </div>
 
