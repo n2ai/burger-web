@@ -34,7 +34,7 @@ const ReservationPage = ()=>{
 
     const onSubmit = (e:FormEvent):void=>{
         e.preventDefault()
-        axios.post('',formData)
+        axios.post('http://localhost:3000/',formData)
             .then((response)=>{
                 console.log(response)
             })
