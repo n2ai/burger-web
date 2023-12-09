@@ -1,6 +1,7 @@
 import axios from "axios"
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, Fragment, useState } from "react"
 import { FormEvent } from "react"
+import Modal from "../components/Modal"
 
 interface IFormData{
     name:string,
@@ -11,7 +12,13 @@ interface IFormData{
     people:number
 }
 
+//Main component
+
 const ReservationPage = ()=>{
+
+    const [showModal, setShowModal] = useState<boolean>(true)
+
+
 
     const [formData, setFormData] = useState<IFormData>({
         name:'',
@@ -28,13 +35,12 @@ const ReservationPage = ()=>{
         setFormData(prev=>{
             const newForm:IFormData = {...prev, [key]:value}
             return newForm
-
         })
     }
 
     const onSubmit = (e:FormEvent):void=>{
         e.preventDefault()
-        axios.post('http://localhost:3000/',formData)
+        axios.post('http://localhost:3000/reservation',formData)
             .then((response)=>{
                 console.log(response)
             })
@@ -46,7 +52,8 @@ const ReservationPage = ()=>{
     
 
     return (
-        <div className="bg-black text-white w-[100wh] h-[100vh] flex items-center justify-center" onSubmit={onSubmit}>
+        <Fragment>
+            <div className="bg-black text-white w-[100wh] h-[100vh] flex items-center justify-center" onSubmit={onSubmit}>
             <form className="w-[500px] h-[600px] border box form">
                 
                 {/**Full name section */}
@@ -118,7 +125,9 @@ const ReservationPage = ()=>{
                     </button>
                 </div>
             </form>
-        </div>
+            </div>
+            <Modal isVisible={showModal} onClose={()=>setShowModal(false)}></Modal>
+        </Fragment>
     )
 }
 
