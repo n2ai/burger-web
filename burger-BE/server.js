@@ -11,7 +11,8 @@ app.use(bodyParser.json())
 
 app.post('/reservation',async(req,res)=>{
   try{
-    await res.send(JSON.stringify('Backend have received'))
+    
+    res.status(200).send(JSON.stringify('Backend have received'))
     
   }catch(err){
     res.status(404).send(`Here is the error: ${err}`)
