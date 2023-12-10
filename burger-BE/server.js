@@ -3,11 +3,26 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
+const mysql = require('mysql2')
 
 //Configuring the express
 app.use(cors())
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
+
+//Data connection
+const connection = mysql.createConnection({
+  host:'localhost',
+  user:'root',
+  password:'Luc!el123',
+  database:'gym_project2'
+})
+
+connection.query(`SELECT * FROM Classes`,(err,result,fields)=>{
+  console.log(result)
+})
+
+
 
 app.post('/reservation',async(req,res)=>{
   try{
