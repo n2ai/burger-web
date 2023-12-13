@@ -15,18 +15,29 @@ const connection = mysql.createConnection({
   host:'localhost',
   user:'root',
   password:'Luc!el123',
-  database:'gym_project2'
+  database:'burger_web'
 })
 
-connection.query(`SELECT * FROM Classes`,(err,result,fields)=>{
-  console.log(result)
-})
-
-
+// connection.query(`SELECT * FROM Reservations`,(err,result,fields)=>{
+//   console.log(result)
+// })
 
 app.post('/reservation',async(req,res)=>{
   try{
+    //Get the data from req
+    const {name,email,phoneNumber,date,time,people} = req.body
     
+    //Connection query
+    // connection.query(`SELECT * WHERE reservedDate = ?`,(err,result,fields)=>{
+
+    // })
+
+    connection.query(`SELECT * FROM Reservations`,(err,result,fields)=>{
+      console.log(result)
+      console.log(result[0].reservedDate)
+      console.log(new Date.parse(reservedDate))
+    })
+
     res.status(200).send(JSON.stringify('Backend have received'))
     
   }catch(err){
