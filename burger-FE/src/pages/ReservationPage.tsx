@@ -16,7 +16,7 @@ interface IFormData{
 
 const ReservationPage = ()=>{
 
-    const [showModal, setShowModal] = useState<boolean>(true)
+    const [showModal, setShowModal] = useState<boolean>(false)
 
 
 
@@ -42,12 +42,12 @@ const ReservationPage = ()=>{
         e.preventDefault()
         axios.post('http://localhost:3000/reservation',formData)
             .then((response)=>{
-                console.log(response)
+                console.log(response.data)
             })
             .catch((error)=>{
                 console.log(error)
             })
-        console.log(formData)
+        
     }
     
 
@@ -104,7 +104,7 @@ const ReservationPage = ()=>{
                             <label htmlFor="time">Time</label>
                         </div>
                         
-                        <input id="time" name="time" onChange={handleChange} className=" bg-black border border-white w-full h-[2.5rem]" type="time" placeholder="date"></input>
+                        <input id="time" min="11:00:00" max="21:00:00" name="time" onChange={handleChange} className=" bg-black border border-white w-full h-[2.5rem]" type="time" placeholder="date"></input>
                         
                     </div>
                 </div>
