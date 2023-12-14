@@ -1,25 +1,28 @@
 const nodemailer = require('nodemailer')
 
 const reservation = async (req,res)=>{
-    const transporter = nodemailer.createTransport({
-        host: "smtp.forwardemail.net",
-        port: 465,
-        secure: true,
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
         auth: {
-          user: "longhai2511@gmail.com",
-          pass: "Luc!el123",
-        },
+          user: 'longhai2511@gmail.com',
+          pass: 'mhna xxvd qzko wjmv'
+        }
     });
-    
-    let message = await transporter.sendMail({
-        from: 'longhai2511@gmail.com', // sender address
-        to: "longhai2511@gmail.com", // list of receivers
-        subject: "Hello", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>", // html body
-    })
-    
-    console.log(message.messageId)
+      
+    var mailOptions = {
+        from: 'longhai2511@gmail.com',
+        to: 'longhai2511@gmail.com',
+        subject: 'Sending Email using Node.js',
+        text: 'That was easy!'
+    };
+      
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+    });
     
 }
 
