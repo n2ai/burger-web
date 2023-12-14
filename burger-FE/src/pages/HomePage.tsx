@@ -12,7 +12,7 @@ const HomePage = ()=>{
                 <div className='flex justify-center items-center max-md:w-full w-[40%]'>
                     
                     <button className='reservation-button max-md:mt-12 lg:w-[70%] max-md:mb-12 text-white border px-6 py-4 hover:scale-125 transition duration-200 ' >
-                        <Link to='/reservation'>Reservation</Link>
+                        <Link to='/api/reservation'>Reservation</Link>
                     </button>
                 </div>
             </div>

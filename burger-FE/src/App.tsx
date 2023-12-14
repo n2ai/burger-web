@@ -16,7 +16,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout/>}>
       <Route index element={<HomePage/>}></Route>
       <Route path="about" element={<AboutPage/>}></Route>
-      <Route path="reservation" element={<ReservationPage/>}></Route>
+      <Route path="/api/reservation" element={<ReservationPage/>}></Route>
     </Route>
   )
 );

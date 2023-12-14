@@ -40,7 +40,7 @@ const ReservationPage = ()=>{
 
     const onSubmit = (e:FormEvent):void=>{
         e.preventDefault()
-        axios.post('http://localhost:3000/reservation',formData)
+        axios.post('http://localhost:3000/api/reservation',formData)
             .then((response)=>{
                 console.log(response.data)
             })
@@ -94,7 +94,7 @@ const ReservationPage = ()=>{
                             <label htmlFor="date">Date</label>
                         </div>
                         
-                        <input id="date" name="date" onChange={handleChange} className=" bg-black border border-white w-full h-[2.5rem]" type="date" placeholder="date"></input>
+                        <input id="date" min={new Date().toLocaleDateString()} name="date" onChange={handleChange} className=" bg-black border border-white w-full h-[2.5rem]" type="date" placeholder="date"></input>
                     </div>
 
                     {/**Time part session */}
