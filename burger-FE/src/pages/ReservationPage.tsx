@@ -18,8 +18,6 @@ const ReservationPage = ()=>{
 
     const [showModal, setShowModal] = useState<boolean>(false)
 
-
-
     const [formData, setFormData] = useState<IFormData>({
         name:'',
         email:'',
@@ -41,13 +39,12 @@ const ReservationPage = ()=>{
     const onSubmit = (e:FormEvent):void=>{
         e.preventDefault()
         axios.post('http://localhost:3000/api/reservation',formData)
-            .then((response)=>{
-                console.log(response.data)
+            .then(()=>{
+                setShowModal(prev=>!prev)
             })
             .catch((error)=>{
                 console.log(error)
             })
-        
     }
     
 
@@ -126,7 +123,7 @@ const ReservationPage = ()=>{
                 </div>
             </form>
             </div>
-            <Modal isVisible={showModal} onClose={()=>setShowModal(false)}></Modal>
+            <Modal isVisible={showModal} message='Reservation has been send' onClose={()=>setShowModal(false)}></Modal>
         </Fragment>
     )
 }
