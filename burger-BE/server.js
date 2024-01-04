@@ -18,19 +18,6 @@ app.use(cors(corsOption))
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
-//Data connection
-//Consider the mysql reserve table
-// const connection = mysql.createConnection({
-//   host:'localhost',
-//   user:'root',
-//   password:'Luc!el123',
-//   database:'burger_web'
-// })
-
-// connection.query(`SELECT * FROM Reservations`,(err,result,fields)=>{
-//   console.log(result)
-// })
-
 app.use('/api',appRoute)
 
 app.get('/', (req, res) => {
