@@ -22,28 +22,25 @@ const HomePage = ()=>{
 
             {/**About us */}
 
-            <div className="homepage-aboutUs text-white w-full h-full flex items-center justify-center">
+            <div className="homepage-aboutUs text-white w-full h-full flex max-md:items-center max-md:justify-center">
                 
-                {/* <div className="homepage-aboutUs-picture">
-                    <img src='/src/images/aboutUs1pic.jpeg'></img>
-                </div>
-                <div className="homepage-aboutUs-text">
-
-                </div> */}
+                
                 <div className='pt-[15rem]'>
-                    <div className='relative border border-white max-md:w-[15rem] max-md:h-[15rem] '>
+                    <div className='relative border border-white max-md:w-[15rem] max-md:h-[15rem] 
+                                    md:w-[40vw] md:h-[15rem] md:translate-x-[30rem]'>
                         
-                        <div className='pt-[5rem] flex items-center justify-center'>
-                            <div className='w-full h-[20px]'>
-                                <h3>About Us</h3>
+                        <div className='pt-[5rem]'>
+                            <div className='flex items-center justify-center'>
+                                <h3>About us:</h3>
                             </div>
                             
-                            <div>
-                                <p>We made burger!</p>
+                            <div className='flex items-center justify-center'>
+                                <p>We make the best burger</p>
                             </div>
                         </div>
 
-                        <div className='max-md:absolute max-md:top-[-8rem] max-md:-translate-x-[2.5rem] max-md:w-[20rem] max-md:h-[10rem] border border-white'>
+                        <div className='max-md:absolute max-md:top-[-8rem] max-md:-translate-x-[2.5rem] max-md:w-[20rem] max-md:h-[10rem] border border-white
+                                        md:top-[-200px] md:w-[20rem] md:h-[15rem] md:translate-x-[-15rem] md:translate-y-[-15rem]'>
                             <img src='/src/images/aboutUs1pic.jpeg' className='w-full h-full object-cover'></img>
                         </div>
                     </div>
