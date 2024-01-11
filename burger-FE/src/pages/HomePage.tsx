@@ -13,7 +13,7 @@ interface IBurgerMenu{
 
 const HomePage = ()=>{
 
-    const [burgerMenu, setBurgerMenu] = useState<Array<IBurgerMenu>>([{
+    const [burgerMenu, setBurgerMenu] = useState<IBurgerMenu[]>([{
         burgerName:'',
         burgerIngredients:'',
         burgerImgUrl:'',
@@ -28,7 +28,7 @@ const HomePage = ()=>{
         
     },[])
 
-    const listOfCard = burgerMenu.map(item=>{return(
+    const listOfCard:JSX.Element[] = burgerMenu.map(item=>{return(
         <MenuCard burgerName={item.burgerName} burgerIngredients={item.burgerIngredients} 
         burgerImgUrl={item.burgerImgUrl} burgerPrice={item.burgerPrice}  />
     )})
@@ -81,8 +81,11 @@ const HomePage = ()=>{
             </div>
 
             {/** Menu */}
-            <div className='homepage-Menu text-white w-full h-full'>
-                <div className='Menu-container'>
+            <div className='homepage-Menu pt-[5rem] flex-wrap justify-center flex w-full h-full text-white'>
+                <div className='w-full text-center mb-[2rem]'>
+                    <h1 className=''>Our Menu</h1>
+                </div>
+                <div className='Menu-container w-[90%] h-full border flex flex-wrap justify-center border-white'>
                     {listOfCard}
                 </div>
             </div>
