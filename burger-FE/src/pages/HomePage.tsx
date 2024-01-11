@@ -2,18 +2,38 @@ import { Link } from 'react-router-dom'
 import {useEffect,useState} from 'react'
 import axios from 'axios'
 import '../styles/homePage.css'
+import MenuCard from '../components/MenuCard'
 
 interface IBurgerMenu{
     burgerName: string,
     burgerIngredients: string,
     burgerImgUrl: string,
     burgerPrice: number
-
 }
 
 const HomePage = ()=>{
 
-    const [burgerMenu, setBurgerMenu] = useState<IBurgerMenu>()
+    const [burgerMenu, setBurgerMenu] = useState<Array<IBurgerMenu>>([{
+        burgerName:'',
+        burgerIngredients:'',
+        burgerImgUrl:'',
+        burgerPrice:0
+    }])
+
+    useEffect(()=>{
+        axios.get("http://localhost:3000/")
+            .then((response):void=>{
+                setBurgerMenu(response.data)
+            })
+        
+    },[])
+
+    const listOfCard = burgerMenu.map(item=>{return(
+        <MenuCard burgerName={item.burgerName} burgerIngredients={item.burgerIngredients} 
+        burgerImgUrl={item.burgerImgUrl} burgerPrice={item.burgerPrice}  />
+    )})
+
+    
 
     return(
         <div className="homepage-main w-[100vw] h-[full] bg-black">
@@ -63,8 +83,7 @@ const HomePage = ()=>{
             {/** Menu */}
             <div className='homepage-Menu text-white w-full h-full'>
                 <div className='Menu-container'>
-                    {/**Menu card belong here */}
-                    {/**Button to online order */}
+                    {listOfCard}
                 </div>
             </div>
         </div>
