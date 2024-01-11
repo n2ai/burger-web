@@ -1,8 +1,20 @@
 import { Link } from 'react-router-dom'
+import {useEffect,useState} from 'react'
+import axios from 'axios'
 import '../styles/homePage.css'
 
+interface IBurgerMenu{
+    burgerName: string,
+    burgerIngredients: string,
+    burgerImgUrl: string,
+    burgerPrice: number
+
+}
 
 const HomePage = ()=>{
+
+    const [burgerMenu, setBurgerMenu] = useState<IBurgerMenu>()
+
     return(
         <div className="homepage-main w-[100vw] h-[full] bg-black">
 
@@ -45,6 +57,14 @@ const HomePage = ()=>{
                         </div>
                     </div>
                     
+                </div>
+            </div>
+
+            {/** Menu */}
+            <div className='homepage-Menu text-white w-full h-full'>
+                <div className='Menu-container'>
+                    {/**Menu card belong here */}
+                    {/**Button to online order */}
                 </div>
             </div>
         </div>

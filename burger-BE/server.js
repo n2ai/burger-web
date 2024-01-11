@@ -20,12 +20,31 @@ app.use(bodyParser.json())
 
 app.use('/api',appRoute)
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+//Get data for the burger homepage
+//Use for response
+let burgerMenu = []
+
+const connection = mysql.createConnection({
+  host:'localhost',
+  user:'root',
+  password:'Luc!el123',
+  database:'burger_web'
+})
+
+connection.query(
+  'SELECT * FROM Menu', (err,results,fields)=>{
+    burgerMenu = results
+  }
+)
+
+app.get('/', async (req, res) => {
+
+  res.send(burgerMenu)
+  
 })
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
 
-//Practice
+
