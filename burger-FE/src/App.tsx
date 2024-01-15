@@ -10,6 +10,7 @@ import {
 import './App.css'
 import AboutPage from "./pages/AboutPage";
 import ReservationPage from "./pages/ReservationPage";
+import OnlineOrderPage from "./pages/OnlineOrderPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,6 +18,7 @@ const router = createBrowserRouter(
       <Route index element={<HomePage/>}></Route>
       <Route path="about" element={<AboutPage/>}></Route>
       <Route path="/api/reservation" element={<ReservationPage/>}></Route>
+      <Route path="/api/onlineOrder" element={<OnlineOrderPage/>}></Route>
     </Route>
   )
 );

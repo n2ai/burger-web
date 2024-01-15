@@ -88,7 +88,13 @@ const HomePage = ()=>{
                 <div className='Menu-container w-[90%] h-full border flex flex-wrap justify-center border-white'>
                     {listOfCard}
                 </div>
+                <div>
+                    <button className='reservation-button max-md:mt-12 lg:w-[70%] max-md:mb-12 text-white border px-6 py-4 hover:scale-125 transition duration-200 ' >
+                        <Link to='/api/onlineOrder'>Online Order</Link>
+                    </button>
+                </div>
             </div>
+            
         </div>
     )
 }
