@@ -8,9 +8,12 @@ const RootLayout = () => {
                 <NavBar/>
             </header>
 
-            <main className="bg-black">
+            <main className="bg-black w-full h-full overflow-auto ">
                 <Outlet/>
             </main>
+            <footer className="">
+
+            </footer>
         </div>
     )
 }
