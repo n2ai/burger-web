@@ -10,12 +10,28 @@ interface IMenuData{
     imgUrl:string
 }
 
+interface IShoppingCart{
+    name:string,
+    price:number,
+    imgUrl:string,
+    count:number
+}
+
 const OnlineOrderPage = ()=>{
 
     const [menu,setMenu] = useState<IMenuData[]>(onlineOrderDB)
 
+    const [cart,setCart] = useState<IShoppingCart[]>([])
 
-    const menuList = menu.map(item=><ShoppingCard name={item.name} price={item.price} imgUrl={item.imgUrl} />)
+    /**Disabled add to cart */
+    const verifyDisabled = (name:string)=>{
+        for( const item of cart){
+            if(item.name === name) return true
+        }
+        return false
+    }
+
+    const menuList = menu.map(item=><ShoppingCard disabled={verifyDisabled(item.name) as boolean} key={item.name} setCart={setCart} name={item.name} price={item.price} imgUrl={item.imgUrl} />)
     
     /**Burger Filter */
 
@@ -40,6 +56,10 @@ const OnlineOrderPage = ()=>{
     const searchAll = ()=>{
         setMenu(onlineOrderDB)
     }
+
+    /**Test what in cart */
+    console.log(cart)
+
 
     return(
         <div className="w-full h-[100vh] text-white pt-4">
