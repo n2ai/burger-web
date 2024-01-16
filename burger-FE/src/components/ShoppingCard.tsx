@@ -3,7 +3,7 @@ interface IShoppingCard{
     price:number,
     imgUrl:string
     setCart: React.Dispatch<React.SetStateAction<ICardItem[]>>
-    disabled:boolean
+    disabled?:boolean
 }
 
 interface ICardItem{
