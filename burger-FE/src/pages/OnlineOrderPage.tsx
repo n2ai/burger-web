@@ -3,6 +3,7 @@ import { useState,useEffect } from "react"
 import onlineOrderDB from "../fakeDB/onlineOrderDB"
 import ShoppingCard from "../components/ShoppingCard"
 import CartItem from "../components/CartItem"
+import PaymentModal from "../components/PaymentModal"
 
 interface IMenuData{
     name: string,
@@ -15,7 +16,8 @@ interface IShoppingCart{
     name:string,
     price:number,
     imgUrl:string,
-    count:number
+    count:number,
+    priceTag:number
 }
 
 const OnlineOrderPage = ()=>{
@@ -25,6 +27,8 @@ const OnlineOrderPage = ()=>{
     const [cart,setCart] = useState<IShoppingCart[]>([])
 
     const [cartOpen,setCartOpen] = useState<boolean>(false)
+
+    const [showModal, setShowModal] = useState<boolean>(false)
 
     /**Disabled add to cart */
     const verifyDisabled = (name:string)=>{
@@ -39,7 +43,7 @@ const OnlineOrderPage = ()=>{
     const menuList = menu.map(item=><ShoppingCard disabled={verifyDisabled(item.name) as boolean} key={item.name} setCart={setCart} name={item.name} price={item.price} imgUrl={item.imgUrl} />)
     
 
-    const cartList = cart.map(item=><CartItem setCart={setCart} name={item.name} price={item.price} imgUrl={item.imgUrl} count={item.count} />)
+    const cartList = cart.map(item=><CartItem priceTag={item.priceTag} setCart={setCart} name={item.name} price={item.price} imgUrl={item.imgUrl} count={item.count} />)
 
     /**Burger Filter */
 
@@ -106,7 +110,7 @@ const OnlineOrderPage = ()=>{
                         </button>
                         <div className={`absolute w-[300px] h-auto border border-white right-0 ${cartOpen?'visible':'hidden'}`}>
                             {cartList}
-                            <p>Hello</p>
+                            <button onClick={()=>setShowModal(true)}>Payment</button>
                         </div>
                     </div>
                 </div>
@@ -119,6 +123,8 @@ const OnlineOrderPage = ()=>{
                 </div>
                 
             </div>
+            
+            <PaymentModal isVisible={showModal} cart={cart} onClose={()=>setShowModal(false)}/>
         </div>
     )
 }

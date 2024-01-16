@@ -10,14 +10,15 @@ interface ICardItem{
     name:string,
     price:number,
     imgUrl:string,
-    count:number
+    count:number,
+    priceTag:number
 }
 
 const ShoppingCard:React.FC<IShoppingCard> = ({name,price,imgUrl,setCart,disabled})=>{
 
     const handleAddToCart = ()=>{
         setCart((prev):ICardItem[]=>{
-            return[...prev,{name:name,price:price,imgUrl:imgUrl,count:1}]
+            return[...prev,{name:name,priceTag:price,price:price,imgUrl:imgUrl,count:1}]
         })
         
     }

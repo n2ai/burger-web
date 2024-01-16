@@ -11,6 +11,15 @@ import './App.css'
 import AboutPage from "./pages/AboutPage";
 import ReservationPage from "./pages/ReservationPage";
 import OnlineOrderPage from "./pages/OnlineOrderPage";
+import { useState } from "react";
+import PaymentPage from "./pages/PaymentPage";
+
+interface IShoppingCart{
+  name:string,
+  price:number,
+  imgUrl:string,
+  count:number
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +28,8 @@ const router = createBrowserRouter(
       <Route path="about" element={<AboutPage/>}></Route>
       <Route path="/api/reservation" element={<ReservationPage/>}></Route>
       <Route path="/api/onlineOrder" element={<OnlineOrderPage/>}></Route>
+      <Route path="/api/onlineOrder/payment" element={<PaymentPage/>}></Route>
+      
     </Route>
   )
 );
@@ -26,6 +37,8 @@ const router = createBrowserRouter(
 
 
 function App() {
+
+
 
   return (
     <>

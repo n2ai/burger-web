@@ -2,7 +2,8 @@ interface IShoppingCart{
     name:string,
     price:number,
     imgUrl:string,
-    count:number
+    count:number,
+    priceTag:number
 }
 
 interface ICartItem{
@@ -10,18 +11,19 @@ interface ICartItem{
     price:number,
     imgUrl:string,
     count:number,
+    priceTag:number
     setCart: React.Dispatch<React.SetStateAction<IShoppingCart[]>>
 }
 
 
-const CartItem:React.FC<ICartItem> = ({name,price,imgUrl,count,setCart})=>{
+const CartItem:React.FC<ICartItem> = ({name,price,imgUrl,count,setCart,priceTag})=>{
 
     const addOne = ()=>{
         setCart((cart):IShoppingCart[]=>{
             return cart.map((item)=>{
                 if(item.name === name){
                     item.count = item.count+=1
-                    
+                    item.price = item.price + priceTag
                 }
                 return item
             }).filter((item)=>item.count > 0)
@@ -33,6 +35,7 @@ const CartItem:React.FC<ICartItem> = ({name,price,imgUrl,count,setCart})=>{
             return cart.map((item)=>{
                 if(item.name === name){
                     item.count = item.count-=1
+                    item.price = item.price - priceTag
                 }
                 return item
             }).filter((item)=>item.count > 0)
