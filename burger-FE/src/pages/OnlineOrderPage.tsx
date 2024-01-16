@@ -22,7 +22,15 @@ interface IShoppingCart{
 
 const OnlineOrderPage = ()=>{
 
-    const [menu,setMenu] = useState<IMenuData[]>(onlineOrderDB)
+
+    const [menu,setMenu] = useState<IMenuData[]>([])
+
+    useEffect(()=>{
+        axios.get("http://localhost:3000/api/onlineOrder")
+        .then((response):void=>{
+            setMenu(response.data)
+        })
+    },[])
 
     const [cart,setCart] = useState<IShoppingCart[]>([])
 
@@ -69,8 +77,6 @@ const OnlineOrderPage = ()=>{
         setMenu(onlineOrderDB)
     }
 
-    /**Test what in cart */
-    console.log(cart)
 
     /**Check to open cart */
     const triggerOpenCart = ()=>{
@@ -110,7 +116,7 @@ const OnlineOrderPage = ()=>{
                         </button>
                         <div className={`absolute w-[300px] h-auto border border-white right-0 ${cartOpen?'visible':'hidden'}`}>
                             {cartList}
-                            <button onClick={()=>setShowModal(true)}>Payment</button>
+                            <button disabled={cart.length ?false:true} onClick={()=>setShowModal(true)}>Payment</button>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer')
+const mysql = require('mysql2')
 
 const reservation = async (req,res)=>{
   //Get customer information
@@ -52,4 +53,43 @@ const reservation = async (req,res)=>{
   })
 }
 
-module.exports = {reservation}
+/**Get online shop details */
+
+const getOnlineShop = async(req,res)=>{
+
+  const connection = mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'Luc!el123',
+    database:'burger_web'
+  })
+  
+  connection.query(
+    'SELECT * FROM OnlineShop', (err,results,fields)=>{
+      res.send(results)
+    }
+  )
+
+}
+
+/**Add order details */
+const addOrder = async(req,res)=>{
+  res.send('receive')
+
+  const connection = mysql.createConnection({
+    host:'localhost',
+    user:'root',
+    password:'Luc!el123',
+    database:'burger_web'
+  })
+  
+  connection.query(
+    'INSERT INTO ',[] ,(err,results,fields)=>{
+      res.send(results)
+    }
+  )
+
+  console.log(req.body)
+}
+
+module.exports = {reservation,getOnlineShop,addOrder}
