@@ -28,8 +28,10 @@ const PaymentModal:React.FC<IPaymentModal> = ({isVisible,onClose,cart})=>{
     const handleSubmit=(e:React.MouseEvent<HTMLButtonElement,MouseEvent>)=>{
         e.preventDefault()
         axios.post('http://localhost:3000/api/onlineOrder',bill)
-        .then(()=>{
-            isVisible = false
+        .then((res)=>{
+            if(res.data == 'receive'){
+                onClose()
+            }
         })
         
     }

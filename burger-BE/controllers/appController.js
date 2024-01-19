@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const mysql = require('mysql2')
+const mysql = require('mysql2/promise')
 
 const reservation = async (req,res)=>{
   //Get customer information
@@ -57,39 +57,43 @@ const reservation = async (req,res)=>{
 
 const getOnlineShop = async(req,res)=>{
 
-  const connection = mysql.createConnection({
+  const connection = await mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'Luc!el123',
     database:'burger_web'
   })
   
-  connection.query(
-    'SELECT * FROM OnlineShop', (err,results,fields)=>{
-      res.send(results)
-    }
-  )
+  const [results, fields] = await connection.execute(
+    'SELECT * FROM OnlineShop')
+    
+  res.send(results)
+  
 
 }
 
 /**Add order details */
 const addOrder = async(req,res)=>{
-  res.send('receive')
+  var totalBill = req.body
+  
 
-  const connection = mysql.createConnection({
+  const connection = await mysql.createConnection({
     host:'localhost',
     user:'root',
     password:'Luc!el123',
     database:'burger_web'
   })
   
-  connection.query(
-    'INSERT INTO ',[] ,(err,results,fields)=>{
-      res.send(results)
-    }
-  )
-
-  console.log(req.body)
+  
+  /**Create Orders */
+  for(let i=1;i<totalBill.length;i++){
+    let id = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+    const [results,fields] = await connection.execute(
+      'INSERT INTO Orders VALUES(?,?,?,?,?)',[id,totalBill[i].name,totalBill[i].price,totalBill[i].count,totalBill[0].customerName]
+    )
+  }
+  
+  res.send('receive').status(202)
 }
 
 module.exports = {reservation,getOnlineShop,addOrder}
